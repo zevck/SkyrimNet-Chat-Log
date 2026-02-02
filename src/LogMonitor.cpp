@@ -6,6 +6,34 @@
 
 namespace SkyrimNetLogger
 {
+    namespace
+    {
+        // Sanitize text for console display - remove non-ASCII characters and limit length
+        std::string SanitizeForConsole(const std::string& text, size_t maxLength = 500)
+        {
+            std::string result;
+            result.reserve(std::min(text.size(), maxLength));
+            
+            for (size_t i = 0; i < text.size() && result.size() < maxLength; ++i) {
+                unsigned char c = static_cast<unsigned char>(text[i]);
+                // Allow printable ASCII (32-126) and common whitespace
+                if ((c >= 32 && c <= 126) || c == '\n' || c == '\r' || c == '\t') {
+                    result += static_cast<char>(c);
+                } else {
+                    // Replace unsupported characters (including UTF-8 multi-byte sequences)
+                    result += '?';
+                }
+            }
+            
+            // Add truncation indicator if we hit the limit
+            if (text.size() > maxLength) {
+                result += "...";
+            }
+            
+            return result;
+        }
+    }
+    
     void LogMonitor::CheckConversationLog()
     {
         // Build path to SkyrimNet conversation log
@@ -136,6 +164,11 @@ namespace SkyrimNetLogger
         console->Print("=== Last SkyrimNet Conversations ===");
         for (size_t i = startIdx; i < messages.size(); ++i) {
             for (const auto& line : messages[i]) {
+                // Skip empty lines
+                if (line.empty()) {
+                    continue;
+                }
+                
                 // Strip timestamp from first line only (format: [YYYY-MM-DD HH:MM:SS] message)
                 std::string output = line;
                 if (line[0] == '[') {
@@ -147,9 +180,17 @@ namespace SkyrimNetLogger
                         if (output.size() >= 6 && output.substr(0, 6) == "[NPC] ") {
                             output = output.substr(6);
                         }
+                    } else {
+                        // Line is just a timestamp with nothing after, skip it
+                        continue;
                     }
                 }
-                console->Print(output.c_str());
+                
+                // Sanitize and trim to 500 chars before printing
+                std::string sanitized = SanitizeForConsole(output);
+                if (!sanitized.empty()) {
+                    console->Print(sanitized.c_str());
+                }
             }
         }
     }

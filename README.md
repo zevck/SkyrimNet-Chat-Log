@@ -13,6 +13,7 @@ A simple SKSE plugin that prints the SkyrimNet conversation log to the console
 - Configurable hotkey (default: PAUSE) to toggle auto-display on/off
 - Reads directly from SkyrimNet's conversation log file
 - Strips timestamps and "[NPC]" prefixes for clean display
+- Limit of 500 characters per line
 
 ## Requirements
 
