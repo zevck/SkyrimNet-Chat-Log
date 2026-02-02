@@ -1,0 +1,52 @@
+# Build directories
+build/
+out/
+cmake-build-*/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# Build outputs (keep the SKSE/Plugins folder structure)
+*.obj
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.iobj
+*.ipdb
+
+# Compiled DLL (will be built from source)
+SKSE/Plugins/*.dll
+SKSE/Plugins/*.pdb
+
+# Keep the INI file
+!SKSE/Plugins/*.ini
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+*.cmake
+!CMakeLists.txt
+!cmake/*.cmake
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+cmake/spdlogConfig.cmake
+CMakeLists.txt
+vcpkg-configuration.json
+vcpkg.json
