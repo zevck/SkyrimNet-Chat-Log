@@ -50,3 +50,4 @@ cmake/spdlogConfig.cmake
 CMakeLists.txt
 vcpkg-configuration.json
 vcpkg.json
+SkyrimNetChatLog-v1.zip
