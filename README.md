@@ -9,10 +9,10 @@ A simple SKSE plugin that prints the SkyrimNet conversation log to the console
 ## Features
 
 - Automatically displays recent SkyrimNet conversations when opening the console
+- Configurable number of messages to display (default: 10)
 - Configurable hotkey (default: PAUSE) to toggle auto-display on/off
 - Reads directly from SkyrimNet's conversation log file
 - Strips timestamps and "[NPC]" prefixes for clean display
-- Configurable number of messages to display (default: 10)
 
 ## Requirements
 
