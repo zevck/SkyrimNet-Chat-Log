@@ -17,7 +17,7 @@ A simple SKSE plugin that prints the SkyrimNet conversation log to the console
 
 ## Requirements
 
-1. [SKSE64](https://skse.silverlock.org/)
+1. [SKSE](https://skse.silverlock.org/)
 2. [Address Library for SKSE Plugins](https://www.nexusmods.com/skyrimspecialedition/mods/32444/)
 3. [SkyrimNet](https://github.com/MinLL/SkyrimNet-GamePlugin/)
 
