@@ -1,6 +1,6 @@
 # SkyrimNet Chat Log
 
-A simple SKSE plugin that prints the SkyrimNet conversation log to the console 
+A simple SKSE plugin that prints the SkyrimNet conversation log to the console. This mod is obsolete as of SkyrimNet Beta 17.
 
 <p align="center">
   <img src="images/skyrimnetchatlog.png">
